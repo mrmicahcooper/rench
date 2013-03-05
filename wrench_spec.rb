@@ -1,0 +1,4 @@
+require 'wrench'
+
+describe Wrench
+
