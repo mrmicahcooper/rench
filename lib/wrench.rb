@@ -12,7 +12,12 @@ class Wrench::CLI
   end
 
   def download_file
-    Faraday.new.get(url)
+    response = Faraday.new.get(url)
+    if response.status == 200
+      response.body
+    else
+      p "Github file not found"
+    end
   end
 
   def file_location

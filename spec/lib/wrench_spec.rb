@@ -2,7 +2,9 @@ require 'wrench'
 
 describe Wrench::CLI do
 
-  subject { described_class.new('mrmicahcooper', 'active_record_spec_helper.rb') }
+  let(:github_user) { "mrmicahcooper" }
+
+  subject { described_class.new(github_user, 'active_record_spec_helper.rb') }
 
   describe '#new' do
     it "knows the github username" do
@@ -25,15 +27,13 @@ describe Wrench::CLI do
 
     context "when file is found" do
       it "downloads the specified tool file" do
-        Faraday.should_receive(:get)
-        subject.download_file
+        subject.download_file.should_not be_nil
       end
-      it "saves the file" do
-        subject.download_file
-      end
+      it "saves saves it"
     end
 
     context "when file is not found" do
+      let(:github_user) { "someone_else" }
       it "returns message that file was not found" do
         subject.download_file.should == "Github file not found"
       end
