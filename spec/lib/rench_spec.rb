@@ -29,6 +29,16 @@ describe Rench::CLI do
     end
   end
 
+  describe "#chosen_fiile" do
+    before do 
+      subject.stub(toolbox: ["form_builder.rb"])
+      $stdin.stub(gets: "0")
+    end
+    it "returns a a list of tools from that github_user" do
+      subject.chosen_file.should == "form_builder.rb"
+    end
+  end
+
   describe "#download_file" do
     context "when file is found" do
       before { $stdin.stub(gets: "text.txt") }
@@ -56,7 +66,6 @@ describe Rench::CLI do
         FileUtils.rm_r("app/text.txt")
       end
     end
-
   end
 
   describe '#new' do
@@ -65,6 +74,27 @@ describe Rench::CLI do
     end
     it "knows the filename" do
       subject.filename.should_not be_nil
+    end
+  end
+
+  describe "#print_renches" do
+    before { subject.stub(toolbox: ["file.rb", "file2.rb"]) }
+    it "prints a list of all the renches with a number next to it" do
+      $stdout.should_receive(:puts).at_least(3)
+      subject.print_renches
+    end
+  end
+
+  describe "#toolbox" do
+    it "returns a collection of filenames from the github users toolbox repo" do
+      subject.toolbox.size.should > 2
+      subject.toolbox.inspect.should match /ui_controller.rb/
+    end
+  end
+
+  describe "#toolbox_url" do
+    it "builds the toolbox_url" do
+      subject.toolbox_url.should == "https://api.github.com/repos/mrmicahcooper/toolbox/contents/files"
     end
   end
 
