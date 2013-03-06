@@ -2,11 +2,11 @@
 require File.expand_path('../lib/wrench/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Hashrocket Workstation"]
-  gem.email         = ["dev@hashrocket.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.authors       = ["Micah Cooper"]
+  gem.email         = ["mrmicahcooper@gmail.com"]
+  gem.description   = %q{Keep all the files you use often in a Toolbox. Then easily grab them (or anyones) with Wrench. }
+  gem.summary       = ""
+  gem.homepage      = "http://github.com/mrmicahcooper/github_wrench"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -16,4 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Wrench::VERSION
 
   gem.add_dependency 'faraday'
+
+  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'rspec'
 end

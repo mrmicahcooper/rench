@@ -1,4 +1,0 @@
-require 'wrench'
-
-describe Wrench
-
