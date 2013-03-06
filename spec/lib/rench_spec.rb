@@ -6,6 +6,13 @@ describe Rench::CLI do
 
   subject { described_class.new(github_user, 'active_record_spec_helper.rb') }
 
+  describe "#ask_for_github_username" do
+    before { $stdin.stub(gets: "micah") }
+    it "asks for a username" do
+      subject.ask_for_github_username.should == "micah"
+    end
+  end
+
   describe "build_file_location" do
     context "when input ends with a slash" do
       it "contactinates the string with the filename" do
@@ -29,7 +36,7 @@ describe Rench::CLI do
     end
   end
 
-  describe "#chosen_fiile" do
+  describe "#chosen_file" do
     before do 
       subject.stub(toolbox: ["form_builder.rb"])
       $stdin.stub(gets: "0")
@@ -82,10 +89,10 @@ describe Rench::CLI do
     context "when toolbox is empty" do
       before do
         subject.stub(tools_found?: false)
-        Kernel.stub(:exit)
+        Kernel.stub(:abort)
       end
       it "exits with a toolbox not found message" do
-        $stdout.should_receive(:puts)
+        Kernel.should_receive(:abort).with("No tools found for \"mrmicahcooper\"")
         subject.print_renches
       end
     end

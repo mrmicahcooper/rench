@@ -16,6 +16,11 @@ class Rench::CLI
     end
   end
 
+  def ask_for_github_username
+    $stdout.puts "Please enter a Github username"
+    $stdin.gets.strip
+  end
+
   def build_file_location(input)
     if input.match /\w+\.\w+/
       input
@@ -52,7 +57,11 @@ class Rench::CLI
     @filename ||= chosen_file
   end
 
-  def initialize(username, filename = nil, new_file_location = nil)
+  def github_username
+    @github_username ||= ask_for_github_username
+  end
+
+  def initialize(username = nil, filename = nil, new_file_location = nil)
     @github_username = username
     @filename = filename
     @file_location = new_file_location
@@ -65,8 +74,7 @@ class Rench::CLI
         $stdout.puts "[#{i}] #{tool}"
       end
     else
-      $stdout.puts "No tools found for \"#{github_username}\""
-      exit 1
+      Kernel.abort "No tools found for \"#{github_username}\""
     end
   end
 
