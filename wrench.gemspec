@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/mrmicahcooper/github_wrench"
 
   gem.files         = `git ls-files`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.executables   = ["wrench"]
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "wrench"
   gem.require_paths = ["lib"]
