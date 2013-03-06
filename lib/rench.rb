@@ -8,7 +8,7 @@ class Rench::CLI
 
   def ask_for_file_location
     $stdout.write "Where do you wanna put \"#{filename}\"? "
-    file = build_file_location($stdin.gets.to_s.strip)
+    file = $stdin.gets.to_s.strip
     if file == ""
       filename
     else
@@ -50,7 +50,7 @@ class Rench::CLI
   end
 
   def file_location
-    @file_location ||=  ask_for_file_location
+    build_file_location(@file_location ||=  ask_for_file_location)
   end
 
   def filename
