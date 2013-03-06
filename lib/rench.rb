@@ -5,7 +5,6 @@ require 'json'
 class Rench::CLI
 
   attr_reader :github_username, :filename, :file_location
-  attr_accessor :toolbox
 
   def ask_for_file_location
     $stdout.write "Where do you wanna put \"#{filename}\"? "
@@ -32,7 +31,7 @@ class Rench::CLI
   def chosen_file
     print_renches
     chosen_file = $stdin.gets.to_i
-    self.toolbox[chosen_file]
+    toolbox[chosen_file]
   end
 
   def download_file
@@ -60,18 +59,31 @@ class Rench::CLI
   end
 
   def print_renches
-    $stdout.puts "Choose a file:"
-    toolbox.each_with_index do |tool, i|
-      $stdout.puts "[#{i}] #{tool}"
+    if tools_found?
+      $stdout.puts "Choose a file:"
+      toolbox.each_with_index do |tool, i|
+        $stdout.puts "[#{i}] #{tool}"
+      end
+    else
+      $stdout.puts "No tools found for \"#{github_username}\""
+      exit 1
     end
   end
 
   def toolbox
-    toolbox_response.map{|tool_file| tool_file["name"] }
+    toolbox_response_body.map{|tool_file| tool_file["name"] }
   end
 
   def toolbox_response
-    @toolbox_response ||= response = JSON.parse(Faraday.get(toolbox_url).body)
+    @toolbox_response ||= Faraday.get(toolbox_url)
+  end
+
+  def tools_found?
+    toolbox_response.status == 200
+  end
+
+  def toolbox_response_body
+    @toolbox_response_body ||= JSON.parse toolbox_response.body
   end
 
   def url

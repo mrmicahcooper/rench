@@ -78,17 +78,42 @@ describe Rench::CLI do
   end
 
   describe "#print_renches" do
-    before { subject.stub(toolbox: ["file.rb", "file2.rb"]) }
-    it "prints a list of all the renches with a number next to it" do
-      $stdout.should_receive(:puts).at_least(3)
-      subject.print_renches
+
+    context "when toolbox is empty" do
+      before do
+        subject.stub(tools_found?: false)
+        Kernel.stub(:exit)
+      end
+      it "exits with a toolbox not found message" do
+        $stdout.should_receive(:puts)
+        subject.print_renches
+      end
     end
+
+    context "when toolbox is not empty" do
+      before do
+        subject.stub(toolbox: ["file.rb", "file2.rb"])
+        subject.stub(tools_found?: true)
+      end
+      it "prints a list of all the renches with a number next to it" do
+        $stdout.should_receive(:puts).at_least(3)
+        subject.print_renches
+      end
+    end
+
   end
 
   describe "#toolbox" do
     it "returns a collection of filenames from the github users toolbox repo" do
       subject.toolbox.size.should > 2
       subject.toolbox.inspect.should match /ui_controller.rb/
+    end
+  end
+
+  describe "#tool_found?" do
+    let(:github_user) { "121ivesnv" }
+    it "returns false if no toolbox is found" do
+      subject.tools_found?.should be_false
     end
   end
 
