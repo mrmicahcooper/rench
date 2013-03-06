@@ -1,7 +1,7 @@
-require "wrench/version"
+require "rench/version"
 require "faraday"
 
-class Wrench::CLI
+class Rench::CLI
 
   attr_reader :github_username, :filename, :file_location
 

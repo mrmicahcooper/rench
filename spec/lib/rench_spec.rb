@@ -1,6 +1,6 @@
-require 'wrench'
+require 'rench'
 
-describe Wrench::CLI do
+describe Rench::CLI do
 
   let(:github_user) { "mrmicahcooper" }
 

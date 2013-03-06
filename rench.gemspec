@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/wrench/version', __FILE__)
+require File.expand_path('../lib/rench/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Micah Cooper"]
   gem.email         = ["mrmicahcooper@gmail.com"]
-  gem.description   = %q{Keep all the files you use often in a Toolbox. Then easily grab them (or anyones) with Wrench. }
+  gem.description   = %q{Keep all the files you use often in a Toolbox. Then easily grab them (or anyones) with Rench. }
   gem.summary       = ""
-  gem.homepage      = "http://github.com/mrmicahcooper/github_wrench"
+  gem.homepage      = "http://github.com/mrmicahcooper/rench"
 
   gem.files         = `git ls-files`.split($\)
-  gem.executables   = ["wrench"]
+  gem.executables   = ["rench"]
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "wrench"
+  gem.name          = "rench"
   gem.require_paths = ["lib"]
-  gem.version       = Wrench::VERSION
+  gem.version       = Rench::VERSION
 
   gem.add_dependency 'faraday'
 

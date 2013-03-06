@@ -1,3 +1,3 @@
-module Wrench
+module Rench
   VERSION = "0.0.1"
 end

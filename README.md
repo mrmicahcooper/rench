@@ -1,7 +1,7 @@
-# Wrench
+# Rench
 
 Everyone with more than one project has a list of tools they use
-over and over. Wrench allows you to put all those tools in a toolbox and
+over and over. Rench allows you to put all those tools in a toolbox and
 easily grab them for any project project.
 
 The idea is:
@@ -17,23 +17,22 @@ The idea is:
 ## Instructions
 
 ```bash
-$ gem install wrench
+$ gem install rench
 
-$ wrench <github_username> <file_name> [new_file_location]
-# wrench will only look in the `/files` directory for <file_name>
+$ rench <github_username> <file_name> [new_file_location]
+# Rench will only look in the `/files` directory for <file_name>
 
-$ wrench mrmicahcooper active_model_spec_helper.rb
+$ rench mrmicahcooper active_model_spec_helper.rb
 
-#=> Where do you want to put active_model_spec_helper.rb?
+#=> Where do you wanna put the file?
 
-
-$ "" (blank) => active_model_spec_helepr.rb
+$(blank) #=> saves as:  active_model_spec_helepr.rb
 or
-$ spec_helper.rb => spec_helper.rb
+$ spec_helper.rb #=> saves as: spec_helper.rb
 or
-$ spec/ => spec/active_model_spec_helepr.rb
+$ spec/ #=> saves as: spec/active_model_spec_helepr.rb
 or
-$ spec => spec/active_model_spec_helepr.rb
+$ spec #=> saves as: spec/active_model_spec_helepr.rb
 or
-$ spec_helper.rb => spec_helper.rb
+$ spec_helper.rb #=> saves as: spec_helper.rb
 ```
