@@ -22,6 +22,11 @@ describe Wrench::CLI do
         subject.build_file_location("app.rb").should == "app.rb"
       end
     end
+    context "when input is blank" do
+      it "returns blank" do
+        subject.build_file_location("").should == ""
+      end
+    end
   end
 
   describe "#download_file" do

@@ -20,6 +20,8 @@ class Wrench::CLI
       input
     elsif input.match /\/$/
       input + filename
+    elsif input == ""
+      ""
     else
       input + "/" + filename
     end
