@@ -24,7 +24,8 @@ $ rench <github_username> <filename> [new_file_location]
 
 $ rench mrmicahcooper active_model_spec_helper.rb
 
-#=> Where do you wanna put the file?
+Where do you wanna put the "active_model_spec_helepr"?
+
 (blank) #=> saves as:  active_model_spec_helepr.rb
 or
 spec_helper.rb #=> saves as: spec_helper.rb
@@ -33,3 +34,29 @@ spec/ #=> saves as: spec/active_model_spec_helepr.rb
 or
 spec #=> saves as: spec/active_model_spec_helepr.rb
 ```
+
+#### Alternatively
+You can just enter a Github user and it will print their toosl for you
+to choose one.
+
+```bash
+
+$rench mrmicahcooper
+
+Choose a file:
+[0] active_record_spec_helper.rb
+[1] formbuilder.rb
+[2] html5.js
+[3] mixins.sass
+[4] step_definitions.rb
+[5] support_paths.rb
+[6] ui_controller.rb
+
+$ 6
+
+Where do you wanna put "ui_controller.rb"?
+
+...
+```
+
+This is great for exploring other people's toolboxes.

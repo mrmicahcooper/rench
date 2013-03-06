@@ -60,7 +60,7 @@ class Rench::CLI
   end
 
   def print_renches
-    $stdout.puts "Choose a file"
+    $stdout.puts "Choose a file:"
     toolbox.each_with_index do |tool, i|
       $stdout.puts "[#{i}] #{tool}"
     end
