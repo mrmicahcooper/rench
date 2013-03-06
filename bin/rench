@@ -6,8 +6,8 @@ $:.unshift Pathname.new(__FILE__).join('../../lib').expand_path.to_s
 require 'rench'
 
 if ARGV.size < 2
-  p "Please enter a Github username and file location"
-  exit 1
+  $stdout.puts "Please enter a Github username and filename "
+else
+  Rench::CLI.new(*ARGV).download_file
 end
 
-Rench::CLI.new(*ARGV).download_file

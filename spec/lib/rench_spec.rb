@@ -43,7 +43,8 @@ describe Rench::CLI do
       before { $stdin.stub(gets: "text.txt") }
       let(:github_user) { "someone_else" }
       it "returns message that file was not found" do
-        subject.download_file.should == "Github file not found"
+        $stdout.should_receive(:puts).with("File not found in someone_else's toolbox")
+        subject.download_file
       end
     end
 

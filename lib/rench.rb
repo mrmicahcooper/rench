@@ -6,7 +6,7 @@ class Rench::CLI
   attr_reader :github_username, :filename, :file_location
 
   def ask_for_file_location
-    p "Where do you wanna put the file?"
+    $stdout.write "Where do you wanna put \"#{filename}\"? "
     file = build_file_location($stdin.gets.to_s.strip)
     if file == ""
       filename
@@ -31,9 +31,9 @@ class Rench::CLI
     response = Faraday.new.get(url)
     if response.status == 200
       system("curl #{url} -o #{file_location} --create-dirs")
-      p "saved to #{ file_location }"
+      $stdout.puts "=> #{ file_location }"
     else
-      p "Github file not found"
+      $stdout.puts "File not found in #{github_username}'s toolbox"
     end
   end
 
