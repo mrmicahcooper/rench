@@ -13,7 +13,7 @@ describe Rench::CLI do
     end
   end
 
-  describe "build_file_location" do
+  describe "#build_file_location" do
     context "when input ends with a slash" do
       it "contactinates the string with the filename" do
         subject.build_file_location("app/").should == "app/active_record_spec_helper.rb"
