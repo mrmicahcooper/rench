@@ -95,11 +95,11 @@ class Rench::CLI
   end
 
   def url
-    "https://raw.github.com/#{github_username}/toolbox/master/files/#{filename}"
+    "https://raw.github.com/#{github_username}/toolbox/master/tools/#{filename}"
   end
 
   def toolbox_url
-    "https://api.github.com/repos/#{github_username}/toolbox/contents/files"
+    "https://api.github.com/repos/#{github_username}/toolbox/contents/tools"
   end
 
 end

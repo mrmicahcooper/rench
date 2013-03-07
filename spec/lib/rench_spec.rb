@@ -126,13 +126,13 @@ describe Rench::CLI do
 
   describe "#toolbox_url" do
     it "builds the toolbox_url" do
-      subject.toolbox_url.should == "https://api.github.com/repos/mrmicahcooper/toolbox/contents/files"
+      subject.toolbox_url.should == "https://api.github.com/repos/mrmicahcooper/toolbox/contents/tools"
     end
   end
 
   describe "#url" do
     it "builds the github url" do
-      subject.url.should == "https://raw.github.com/mrmicahcooper/toolbox/master/files/active_record_spec_helper.rb"
+      subject.url.should == "https://raw.github.com/mrmicahcooper/toolbox/master/tools/active_record_spec_helper.rb"
     end
   end
 

@@ -6,7 +6,7 @@ Here is a cooler way to do that:
 Put them in your 'toolbox' repo, maintain them, share them, and most importantly- retrieve them easily.
 
 - Make a Github repository called toolbox.
-- Make a `toolbox/files` directory
+- Make a `toolbox/tools` directory
 - Fill it with all the files you use have ever used on more than one
   project.
 - Make a .markdown file for all these tools so you, and anyone
@@ -20,7 +20,7 @@ Put them in your 'toolbox' repo, maintain them, share them, and most importantly
 $ gem install rench
 
 $ rench <github_username> <filename> [new_file_location]
-# Rench will only look in the `/files` directory for <filename>
+# Rench will only look in the `/tools` directory for <filename>
 
 $ rench mrmicahcooper active_model_spec_helper.rb
 
