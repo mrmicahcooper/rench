@@ -10,8 +10,8 @@ Put them in your 'toolbox' repo, maintain them, share them, and most importantly
 - Make a `toolbox/tools` directory
 - Fill it with all the files you use have ever used on more than one
   project.
-- Make a .markdown file for all these tools so you, and anyone
-  else, can always know how to use your tools.
+- Make a .markdown file for all your tools so you, and anyone
+  else, know how to use your them.
 - When you're working on a project, grab your tools and stick them where
   you need with Rench.
 
@@ -65,4 +65,4 @@ This is great for exploring other people's toolboxes.
 
 ### Dependencies
 
-- curl
+- You're gonna need __curl__ to get this baby turnin'.
