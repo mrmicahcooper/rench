@@ -1,4 +1,5 @@
 # Rench
+[![Code Climate](https://codeclimate.com/github/mrmicahcooper/rench.png)](https://codeclimate.com/github/mrmicahcooper/rench) 
 
 Do you ever have a list of files you pull from one project to another?
 Here is a cooler way to do that: 
