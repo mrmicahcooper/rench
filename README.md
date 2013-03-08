@@ -66,3 +66,7 @@ This is great for exploring other people's toolboxes.
 ### Dependencies
 
 - curl
+
+#### P.S.
+I though the [Pry] Logo was really cool so I stuck a wrench in my logo
+to be like them :)
