@@ -79,7 +79,11 @@ class Rench::CLI
   end
 
   def toolbox
-    toolbox_response_body.map{|tool_file| tool_file["name"] }
+    @toolbox ||= toolbox_files.map{|tool_file| tool_file["name"] }
+  end
+
+  def toolbox_files
+    @toolbox_files ||= toolbox_response_body.select{|box| box["type"] == "file"}
   end
 
   def toolbox_response
