@@ -19,5 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'highline'
+  gem.add_development_dependency 'aruba'
 
 end
