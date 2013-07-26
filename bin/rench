@@ -5,5 +5,4 @@ require 'pathname'
 $:.unshift Pathname.new(__FILE__).join('../../lib').expand_path.to_s
 require 'rench'
 
-Rench::CLI.new(*ARGV).download_file
-
+Rench::CLI.new(*ARGV).crank
