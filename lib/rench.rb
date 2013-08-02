@@ -29,7 +29,7 @@ class Rench::CLI
   end
 
   def tool_menu
-    highline.say("No tools found for #{@github_username}")
+    toolbox.map{|tool| tool["name"]}
   end
 
   def highline
@@ -38,22 +38,25 @@ class Rench::CLI
 
 private
 
-  def url
-    "http://raw.github.com/#{github_username}/toolbox/master/tools/#{filename}"
+  def response
+    @response ||= Faraday.new.get(toolbox_url).tap do |resp|
+      if resp.status != 200
+        highline.say("No toolbox found for #{@github_username}")
+        exit
+      end
+    end
+  end
+
+  def toolbox
+    @toolbox ||= JSON.parse(response.body)
   end
 
   def toolbox_url
-    "http://api.github.com/repos/#{github_username}/toolbox/contents/tools"
+    "https://api.github.com/repos/#{github_username}/toolbox/contents/tools"
+  end
+
+  def url
+    "https://raw.github.com/#{github_username}/toolbox/master/tools/#{filename}"
   end
 
 end
-
-__END__
-
-    # response = Faraday.new.get(url)
-    # if response.status == 200
-    #   system("curl #{url} -o #{file_location} --create-dirs")
-    #   # $stdout.puts "=> #{ file_location }"
-    # else
-    #   # $stdout.puts "File not found in #{github_username}'s toolbox"
-    # end

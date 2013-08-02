@@ -15,7 +15,6 @@ describe Rench::CLI do
       rench.crank
     end
 
-    it "checks the toolbox for the file"
     it "downloads the tool"
   end
 
@@ -56,9 +55,26 @@ describe Rench::CLI do
 
   describe "#tool_menu" do
     context "when there are no tools" do
+      before do
+        response = double(status: 400, body: "")
+        Faraday::Connection.any_instance.stub(get: response)
+      end
       it "returns a 'no tools' message" do
-        highline.should_receive(:say).with("No tools found for mrmicahcooper")
-        rench.tool_menu
+        highline.should_receive(:say).with("No toolbox found for mrmicahcooper")
+        begin
+          rench.tool_menu
+        rescue SystemExit
+        end
+      end
+    end
+
+    context "when there are tools" do
+      before do
+        response = double(status: 200, body: '[{"name":"tool.txt"}]')
+        Faraday::Connection.any_instance.stub(get: response)
+      end
+      it "returns an array of tool names" do
+        rench.tool_menu.should == ["tool.txt"]
       end
     end
   end
