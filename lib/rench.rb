@@ -6,8 +6,6 @@ require 'readline'
 
 class Rench::CLI
 
-  attr_accessor :filename
-
   def crank
     system("curl #{url} -o #{file_location} --create-dirs")
   end

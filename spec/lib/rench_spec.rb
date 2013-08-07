@@ -6,6 +6,7 @@ describe Rench::CLI do
 
   describe "#crank" do
     after{ File.delete 'tmp/thing.rb' }
+
     let(:rench) do
       Rench::CLI.new('mrmicahcooper', 'ui_controller.rb', 'tmp/thing.rb')
     end
