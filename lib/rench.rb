@@ -2,16 +2,14 @@ require "rench/version"
 require "highline"
 require "faraday"
 require 'json'
+require 'readline'
 
 class Rench::CLI
 
-  attr_reader :github_username, :filename, :file_location
+  attr_accessor :filename
 
   def crank
-    ask_for_username
-    choose_file
-    #check toolbox for file
-    #download tool
+    system("curl #{url} -o #{file_location} --create-dirs")
   end
 
   def initialize(username = nil, filename = nil, new_file_location = nil)
@@ -20,11 +18,11 @@ class Rench::CLI
     @file_location = new_file_location
   end
 
-  def ask_for_username
+  def github_username
     @github_username ||= highline.ask "Enter a Github username"
   end
 
-  def choose_file
+  def filename
     @filename ||= highline.choose(tool_menu)
   end
 
@@ -32,11 +30,26 @@ class Rench::CLI
     toolbox.map{|tool| tool["name"]}
   end
 
+  def file_location
+    @file_location ||= choose_file_location
+  end
+
+  def choose_file_location
+    highline.ask("Where do you want to download the file?", file_options) do |question|
+      question.readline = true
+      question.answer_type = String
+    end
+  end
+
   def highline
     @highline ||= HighLine.new
   end
 
 private
+
+  def file_options
+    Dir.glob("**/*")
+  end
 
   def response
     @response ||= Faraday.new.get(toolbox_url).tap do |resp|
