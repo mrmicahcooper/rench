@@ -19,11 +19,14 @@ class Rench::CLI
   end
 
   def github_username
-    @github_username ||= highline.ask "Enter a Github username"
+    @github_username ||= highline.ask "Enter a Github username:"
   end
 
   def filename
-    @filename ||= highline.choose(*tool_menu)
+    @filename ||= begin
+      highline.say("\nChoose a tool:")
+      highline.choose(*tool_menu)
+    end
   end
 
   def tool_menu

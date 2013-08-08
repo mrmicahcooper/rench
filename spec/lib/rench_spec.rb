@@ -22,7 +22,7 @@ describe Rench::CLI do
     context "when NOT initialized with a username" do
       let(:rench) { Rench::CLI.new }
       it "prompts for username" do
-        highline.should_receive(:ask).with("Enter a Github username")
+        highline.should_receive(:ask).with("Enter a Github username:")
         rench.github_username
       end
     end
