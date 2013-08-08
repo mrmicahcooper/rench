@@ -7,7 +7,9 @@ require 'readline'
 class Rench::CLI
 
   def crank
-    system("curl #{url} -o #{file_location} --create-dirs")
+    if system("curl #{url} -o #{file_location} --create-dirs")
+      puts "\n > #{@filename} => #{file_location}\n\n"
+    end
   end
 
   def initialize(username = nil, filename = nil, new_file_location = nil)
