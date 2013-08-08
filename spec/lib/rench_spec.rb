@@ -40,7 +40,7 @@ describe Rench::CLI do
       let(:rench) { Rench::CLI.new "mrmicahcooper" }
       it "asks to choose a file from the tool menu" do
         tools = []
-        highline.should_receive(:choose).with(tools)
+        highline.should_receive(:choose).with(*tools)
         rench.should_receive(:tool_menu).and_return(tools)
         rench.filename
       end
@@ -86,18 +86,20 @@ describe Rench::CLI do
         rench.file_location.should == "/location"
       end
     end
-    context "when NOT initialize with a file location" do
+    context "when NOT initialized with a file location" do
       let(:rench) { Rench::CLI.new('mrmichacooper', "" ) }
       it "asks for a location" do
         rench.should_receive(:choose_file_location)
         rench.file_location
       end
     end
+
   end
 
   describe "#choose_file_location" do
-    it "asks where to put the file" do
-      rench.highline.should_receive(:ask)
+    it "asks where to put he file" do
+      rench.stub(file_options: ['foo'])
+      rench.highline.should_receive(:ask).with("Where do you want to put 'file.txt'?", ['foo'])
       rench.choose_file_location
     end
   end

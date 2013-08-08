@@ -21,7 +21,7 @@ class Rench::CLI
   end
 
   def filename
-    @filename ||= highline.choose(tool_menu)
+    @filename ||= highline.choose(*tool_menu)
   end
 
   def tool_menu
@@ -33,9 +33,10 @@ class Rench::CLI
   end
 
   def choose_file_location
-    highline.ask("Where do you want to download the file?", file_options) do |question|
+    highline.ask("Where do you want to put '#{filename.to_s}'?", file_options) do |question|
       question.readline = true
       question.answer_type = String
+      question.default = filename
     end
   end
 
