@@ -104,4 +104,25 @@ describe Rench::CLI do
     end
   end
 
+  describe "#download_file_location" do
+    context "when file_location ends with a slash" do
+      it "contactinates the string with the filename" do
+        rench.stub(file_location: "app/")
+        rench.download_file_location.should == "app/file.txt"
+      end
+    end
+    context "when the file_location has no file extension" do
+      it "joins the input and filename with a '/'" do
+        rench.stub(file_location: "app")
+        rench.download_file_location.should == "app/file.txt"
+      end
+    end
+    context "when the file_location has a file extension" do
+      it "returns just the input" do
+        rench.stub(file_location: "app.rb")
+        rench.download_file_location.should == "app.rb"
+      end
+    end
+  end
+
 end

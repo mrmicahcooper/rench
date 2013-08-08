@@ -7,8 +7,8 @@ require 'readline'
 class Rench::CLI
 
   def crank
-    if system("curl #{url} -o #{file_location} --create-dirs")
-      puts "\n > #{@filename} => #{file_location}\n\n"
+    if system("curl #{url} -o #{download_file_location} --create-dirs")
+      puts "\n > #{@filename} => #{download_file_location}\n\n"
     end
   end
 
@@ -33,6 +33,17 @@ class Rench::CLI
   def file_location
     @file_location ||= choose_file_location
   end
+
+  def download_file_location
+    if file_location.match /\w+\.\w+/
+      file_location
+    elsif file_location.match /\/$/
+      file_location + filename
+    else
+      file_location + "/" + filename
+    end
+  end
+
 
   def choose_file_location
     highline.ask("Where do you want to put '#{filename.to_s}'?", file_options) do |question|
