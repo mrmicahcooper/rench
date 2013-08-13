@@ -1,5 +1,6 @@
 # Rench
 
+[![Gem Version](https://badge.fury.io/rb/rench.png)](http://badge.fury.io/rb/rench)
 [![Code Climate](https://codeclimate.com/github/mrmicahcooper/rench.png)](https://codeclimate.com/github/mrmicahcooper/rench)
 [![Build Status](https://travis-ci.org/mrmicahcooper/rench.png?branch=master)](https://travis-ci.org/mrmicahcooper/rench)
 
