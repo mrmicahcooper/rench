@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/rench.png)](http://badge.fury.io/rb/rench)
 [![Code Climate](https://codeclimate.com/github/mrmicahcooper/rench.png)](https://codeclimate.com/github/mrmicahcooper/rench)
 [![Build Status](https://travis-ci.org/mrmicahcooper/rench.png?branch=master)](https://travis-ci.org/mrmicahcooper/rench)
+[![Dependency Status](https://gemnasium.com/mrmicahcooper/rench.png)](https://gemnasium.com/mrmicahcooper/rench)
 
 Do you ever have a list of files you pull from one project to another?
 Here is a cooler way to do that:
